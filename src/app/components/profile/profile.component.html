@@ -1,0 +1,442 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link active home" aria-current="page" href="#" alt="Go to Home"><span
+                            title="Go to Home ">Home</span>
+                        <span>&nbsp;|</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active profile" aria-current="page"><span class="profile">Profile</span></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li>
+                    <form style="height: 30px;margin-right: auto" class="d-flex">
+                        <mat-card style="height: 30px;" *ngIf="(afAuth.user | async)">
+                            <mat-icon class="checkCircle">check_circle</mat-icon>
+
+                            <span style="position:relative; bottom: 18px; margin-left:10px; width: 1000px">Welcome:
+                                <span *ngIf="(user | async)">{{ (user | async)?.displayName }}</span>
+                            </span>
+
+                        </mat-card>
+                        <mat-card *ngIf="!(afAuth.user | async)">
+                            <mat-icon style="position:relative; bottom: 12px;">do_not_disturb</mat-icon>
+                            <span style="position:relative; bottom: 18px; margin-left:10px">User is not logged
+                                in</span>
+                        </mat-card>
+                    </form>
+                </li>
+                <!--  <div class="col">
+                    <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle
+                            dropdown</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem>Action - 1</button>
+                            <button ngbDropdownItem>Another Action</button>
+                            <button ngbDropdownItem>Something else is here</button>
+                        </div>
+                    </div>
+                </div> -->
+                <app-menu-arrow></app-menu-arrow>
+                <!-- <li *ngIf="(user | async)" class="nav-item dropdown">
+                  <form style="height: 30px;margin-right: auto" class="menu-btn d-flex">
+                    <mat-card style="height: 30px; width: 92px">
+                    <a *ngIf="(user | async)"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                      <span class="arrow">
+                        <i *ngIf="!showMore" (click)="showResult()"><img style="height: 30px; width:83px" src="../../../assets/img/down-arrow-white.png" alt="down arrow"></i>
+                        <i *ngIf="showMore" (click)="hideResult()"><img style="height: 30px; width:83px" src="../../../assets/img/up-arrow-white.png" alt="up arrow"></i>
+                      </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <li><button class="dropdown-item" routerLink="/profile"><img class="imageIcon profile"
+                                  src="../../../assets/img/person-circle.svg" person-circle.svg width="17" height="20"
+                                  alt=""> Profile </button></li>
+                      <li><button class="dropdown-item" routerLink="/home"><img class="imageIcon house-fill"
+                                  src="../../../assets/img/house-fill.svg" house-fill.svg width="17" height="20"
+                                  alt=""> Go Home </button></li>
+
+
+                      <li><button class="dropdown-item" routerLink="/highlight-test"><img
+                                  src="../../../assets/img/display.svg" display.svg width="17" height="17" alt="">
+                              Highlight test </button></li>
+                      <li>
+
+                      <li><button class="dropdown-item" routerLink="/pipe-demo"><img
+                                  src="../../../assets/img/display.svg" display.svg width="17" height="17" alt="">
+                              Pipes Demo </button></li>
+                      <li>
+
+                      <li><button class="dropdown-item" routerLink="/directive-demo"><img
+                                  src="../../../assets/img/display.svg" display.svg width="17" height="17" alt="">
+                              Directives Demo </button></li>
+                      <li>
+
+                      <li><button class="dropdown-item" routerLink="/submit-keypress"><img
+                                  src="../../../assets/img/display.svg" display.svg width="17" height="17" alt="">
+                              Submit on Keypress </button></li>
+                      <li>
+
+                      <li><button class="dropdown-item" routerLink="/reactive-form"><img
+                                  src="../../../assets/img/display.svg" display.svg width="17" height="17" alt="">
+                              Reactive Form </button></li>
+                      <li>
+
+                      <li><button class="dropdown-item" routerLink="/ngx-form-validation"><img
+                                  src="../../../assets/img/display.svg" display.svg width="17" height="17" alt="">
+                              Ngx Form Validation </button></li>
+                      <li>
+
+
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+
+                      <li><button class="dropdown-item logoutPointer" (click)="logout()"><img class="imageIcon logout"
+                                  src="../../../assets/img/door-open-fill.svg" door-open-fill.svg width="17"
+                                  height="17" alt=""> Logout</button>
+                      </li>
+                  </ul>
+                  </mat-card>
+                  </form>
+
+                </li> -->
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="profile-card-4 z-depth-3">
+                    <div class="card">
+                        <div class="card-body text-center bg-primary rounded-top">
+                            <div class="user-box">
+                                <img src="../../../assets/img/pw-img1.jpg" alt="user avatar">
+                            </div>
+                            <h5 class="mb-1 text-white">Paul Welby</h5>
+                            <h6 class="text-light">UI/UX Engineer / Web Developer in Angular & React</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group shadow-none">
+                                <li class="list-group-item">
+                                    <div class="list-icon">
+                                        <i class="fa fa-phone-square"></i>
+                                    </div>
+                                    <div class="list-details">
+                                        <span>{{ phone }}</span>
+                                        <small>Mobile Number</small>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="list-icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="list-details">
+                                        <span><a href="mailto: {{email}}">{{email}}</a></span>
+                                        <small>Email Address</small>
+                                    </div>
+                                </li>
+                                <li class=" list-group-item">
+                                    <div class="list-icon">
+                                        <i class="fa fa-globe"></i>
+                                    </div>
+                                    <div class="list-details">
+                                        <span><a href='{{website}}' target="_blank">{{ website }}</a></span>
+                                        <small>Website Address</small>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="row text-center mt-4">
+                                <div class="col p-2">
+                                    <h4 class="mb-1 line-height-5">154</h4>
+                                    <small class="mb-0 font-weight-bold">Projects</small>
+                                </div>
+                                <div class="col p-2">
+                                    <h4 class="mb-1 line-height-5">2.2k</h4>
+                                    <small class="mb-0 font-weight-bold">Followers</small>
+                                </div>
+                                <div class="col p-2">
+                                    <h4 class="mb-1 line-height-5">9.1k</h4>
+                                    <small class="mb-0 font-weight-bold">Views</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-center">
+                            <a href="javascript:void()" class="btn-social btn-facebook waves-effect waves-light m-1"><i
+                                    class="fa fa-facebook"></i></a>
+                            <a href="javascript:void()"
+                                class="btn-social btn-google-plus waves-effect waves-light m-1"><i
+                                    class="fa fa-google-plus"></i></a>
+                            <a href="javascript:void()"
+                                class="list-inline-item btn-social btn-behance waves-effect waves-light"><i
+                                    class="fa fa-behance"></i></a>
+                            <a href="javascript:void()"
+                                class="list-inline-item btn-social btn-dribbble waves-effect waves-light"><i
+                                    class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card z-depth-3">
+                    <div class="card-body">
+                        <ul class="nav nav-pills nav-pills-primary nav-justified">
+                            <li class="nav-item">
+                                <a href="javascript:void();" data-target="#profile" data-toggle="pill"
+                                    class="nav-link active show"><i class="icon-user"></i> <span
+                                        class="hidden-xs">Profile</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:void();" data-target="#messages" data-toggle="pill"
+                                    class="nav-link"><i class="icon-envelope-open"></i> <span
+                                        class="hidden-xs">Messages</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i
+                                        class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-3">
+                            <div class="tab-pane active show" id="profile">
+                                <h5 class="mb-3">User Profile</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="UP-h-style">About</h6>
+                                        <p>
+                                            Web Designer, UI/UX Engineer
+                                        </p>
+                                        <h6 class="UP-h-style">Hobbies</h6>
+                                        <p>
+                                            Jazz-Rock fusion music, Playing guitar, Bonsai Gardening, Art composition,
+                                            Sketching, Colored Pencil drawings, Pastels, Watercolors, Cooking, Pets, I
+                                            love the great outdoors.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="UP-h-style">Recent badges</h6>
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">html5</a>&nbsp;
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">css3</a>&nbsp;
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">sass</a>&nbsp;
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">react</a>&nbsp;
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">angular</a>&nbsp;
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">material-design</a>&nbsp;
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">jquery</a>&nbsp;
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">bootstrap</a>&nbsp;
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">responsive-design</a>&nbsp;
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">vs-code</a>&nbsp;
+                                        <a href="javascript:void();" class="badge badge-dark badge-pill">codeply</a>&nbsp;
+                                        <hr>
+                                        <span class="badge badge-primary"><i class="fa fa-user"></i> 900
+                                            Followers</span>&nbsp;
+                                        <span class="badge badge-success"><i class="fa fa-cog"></i> 43
+                                            Forks</span>&nbsp;
+                                        <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h5 class="mt-2 mb-3"><span class="fa fa-clock-o ion-clock float-right"></span>
+                                            Recent Activity</h5>
+                                        <table class="table table-hover table-striped">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Abby</strong> joined ACME Project Team in
+                                                        <strong>`Collaboration`</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Gary</strong> deleted My Board1 in
+                                                        <strong>`Discussions`</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Kensington</strong> deleted MyBoard3 in
+                                                        <strong>`Discussions`</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <strong>John</strong> deleted My Board1 in
+                                                        <strong>`Discussions`</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Skell</strong> deleted his post Look at Why this is.. in
+                                                        <strong>`Discussions`</strong>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!--/row-->
+                            </div>
+
+                            <div class="tab-pane" id="messages">
+
+                                <div class="alert alert-info alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <div class="alert-icon">
+                                        <i class="icon-info"></i>
+                                    </div>
+                                    <div class="alert-message">
+                                        <span><strong>Info!</strong> Lorem Ipsum is simply dummy text.</span>
+                                    </div>
+                                </div>
+                                <table class="table table-hover table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="float-right font-weight-bold">3 hrs ago</span> Here is your
+                                                a link to the latest summary report from the..
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="float-right font-weight-bold">Yesterday</span> There has
+                                                been a request on your account since that was..
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="float-right font-weight-bold">9/10</span> Porttitor vitae
+                                                ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="float-right font-weight-bold">9/4</span> Vestibulum
+                                                tincidunt ullamcorper eros eget luctus.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="float-right font-weight-bold">9/4</span> Maxamillion ais
+                                                the fix for tibulum tincidunt ullamcorper eros.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="tab-pane" id="edit">
+                                <div>
+                                    <form>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text" value="Paul">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text" value="Welby">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="email" value="pwelby@gmail.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Change
+                                                profile</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="file">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Website</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="url" value="{{ website }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text" value="" placeholder="Street">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                                            <div class="col-lg-6">
+                                                <input class="form-control" type="text" value="" placeholder="City">
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input class="form-control" type="text" value="" placeholder="State">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Username</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text" value="pwelby">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                                            <div class="col-lg-9">
+                                                <input class="toggleShow " toggle placeholder="Password"
+                                                    type="password">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Confirm
+                                                Password</label>
+                                            <div class="col-lg-9">
+                                                <input class=" toggleShow" toggle placeholder="Password"
+                                                    type="password">
+                                                <!-- <i class="bi bi-eye-slash" id="togglePassword"></i> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                                            <div class="col-lg-9">
+                                                <input type="reset" class="btn btn-secondary" value="Cancel">&nbsp;
+                                                <input type="button" class="btn btn-primary" value="Save Changes">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
+</body>
