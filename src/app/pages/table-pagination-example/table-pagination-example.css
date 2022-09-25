@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+}
+
+table.mat-table {
+  max-width: 100%;
+}
+
+.mat-elevation-z8 {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+table.mat-table.cdk-table {
+  padding-top: 20px;
+}
+
+/* mat-cell cdk-cell edit-icons cdk-column-editObj mat-column-editObj ng-star-inserted */
+
+.edit-icons[_ngcontent-umk-c108] {
+  position: relative;
+  float: right;
+  border-bottom: none;
+  top: 14px;
+}
+
+.action-buttons {
+  position: relative;
+  /* left: 30px; */
+  float: right;
+  border-bottom: none;
+  top: 14px;
+}
